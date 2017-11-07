@@ -1,0 +1,1 @@
+Задачи взяты с https://habrahabr.ru/post/44031/
