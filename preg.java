@@ -10,30 +10,40 @@
 
 import java.io.*;
 
-class Preg
+class preg
 {
+	public static String lineForCompare = "";
 	public static void main (String[] args)
 	{
-		String lineForCompare = "";
+		// lineForCompare - переменная для сравнения с аргументом
 		try {
 			BufferedReader readFromInput = new BufferedReader(new FileReader("input.txt"));
 			
+			// читаем весь файл построчно
 			while ((lineForCompare = readFromInput.readLine()) != null)
 			{
-				for (String retval : lineForCompare.split(" ", 0))
-				{
-					if (retval.toLowerCase().equals( args[0].toLowerCase() ) || retval.toLowerCase().equals( args[1] ))
-					{
-						System.out.printlineForCompare(lineForCompare);
-					}
-				}
+				findWordInLine( lineForCompare.split(" ", 0), args );
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	// метод для сравнения args и lineForCompare
+	private static void findWordInLine( String[] lineOfFile, String[] argsOfProgram )
+	{
+		for ( String wordOfFile : lineOfFile )
+		{
+			for ( String wordOfArgs : argsOfProgram )
+			{
+				if ( wordOfFile.toLowerCase().equals(wordOfArgs) )
+				{
+					System.out.println( lineForCompare );
+				}
+			}
+		}
 	}
 }
 
